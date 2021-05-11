@@ -12,7 +12,8 @@ def menu():
     (2) Remove an Item
     (3) Modify an item
     (4) Search (or query) an Item
-    (5) Exit
+    (5) Print current inventory
+    (6) Exit
     ''')
     # print menu
 
@@ -49,6 +50,8 @@ def switch(choice):
         search(PRODUCT_ID)
         # search
     elif choice == '5':
+        print_inventory()
+    elif choice == '6':
         print("Exiting Console")
         quit()
     else:
@@ -173,7 +176,7 @@ def modify_an_item(PRODUCT_ID):
 
 
 def search(PRODUCT_ID):
-    data = pd.read_csv("database.csv")
+    data = pd.read_csv(file)
     data.query('PRODUCT_ID == ' + PRODUCT_ID, inplace=True)
     print(data)
     menu()
@@ -182,6 +185,77 @@ def search(PRODUCT_ID):
 def convert_tuple(my_tuple):
     string = ''.join(my_tuple)
     return string
+
+
+def print_inventory():
+    print('''
+       --------- Sorting Menu ----------
+       (1) Alphabetical Order
+       (2) Numerical Order of ID#
+       (3) Price
+       (4) Quantity
+       (5) As Is in CSV
+       (6) Back to Menu
+       ''')
+
+    print("How would you like to sort the inventory?")
+    choice2 = input()
+    inventory_sort(choice2)
+
+
+def inventory_sort(choice2):
+    data = pd.read_csv(file)
+    if choice2 == '1':
+        sorted_csv = data.sort_values(by=[' PRODUCT_NAME'])
+        print(sorted_csv)
+        menu()
+    elif choice2 == '2':
+        sorted_csv = data.sort_values(by=['PRODUCT_ID'])
+        print(sorted_csv)
+        menu()
+    elif choice2 == '3':
+        print('''
+        Would you like to print the prices:
+        (1) Highest to Lowest
+        (2) Lowest to Highest
+        ''')
+        choice_order = input()
+        if choice_order == '1':
+            sorted_csv = data.sort_values(by=[' PRICE'], ascending=False)
+            print(sorted_csv)
+            menu()
+        elif choice_order == '2':
+            sorted_csv = data.sort_values(by=[' PRICE'], ascending=True)
+            print(sorted_csv)
+            menu()
+        else:
+            print_inventory()
+    elif choice2 == '4':
+        print('''
+        Would you like to print the quantity:
+        (1) Highest to Lowest
+        (2) Lowest to Highest
+        ''')
+        choice_order = input()
+        if choice_order == '1':
+            sorted_csv = data.sort_values(by=[' QUANTITY'], ascending=False)
+            print(sorted_csv)
+            menu()
+        elif choice_order == '2':
+            sorted_csv = data.sort_values(by=[' QUANTITY'], ascending=True)
+            print(sorted_csv)
+            menu()
+        else:
+            print_inventory()
+    elif choice2 == '5':
+        print(data)
+        menu()
+    elif choice2 == '6':
+        print("Back to Main Menu...")
+        menu()
+    else:
+        print("Invalid Entry, Back to Sorting Menu...")
+        print_inventory()
 
 
 menu()
