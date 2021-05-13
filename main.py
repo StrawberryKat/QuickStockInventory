@@ -48,7 +48,7 @@ def switch(choice):
         print('Enter the Product ID:')
         PRODUCT_ID = input()
         search(PRODUCT_ID)
-        # search
+        #search
     elif choice == '5':
         print_inventory()
     elif choice == '6':
@@ -92,7 +92,7 @@ def remove_an_item(PRODUCT_ID):
 
 
 def modify_an_item(PRODUCT_ID):
-    df = pd.read_csv("database.csv")
+    df = pd.read_csv(file)
     df.query('PRODUCT_ID == ' + PRODUCT_ID, inplace=True)
     print('''
     --------- MODIFY MENU ----------
@@ -109,7 +109,7 @@ def modify_an_item(PRODUCT_ID):
 
 
 def modify_menu(choice3,PRODUCT_ID):
-    df = pd.read_csv("database.csv")
+    df = pd.read_csv(file)
     df.query('PRODUCT_ID == ' + PRODUCT_ID, inplace=True)
     if choice3 == '1':
         index_id = 0
@@ -235,6 +235,7 @@ def inventory_sort(choice2):
             print(sorted_csv)
             menu()
         else:
+            print("Invalid Entry, Back to Sorting Menu...")
             print_inventory()
     elif choice2 == '4':
         print('''
@@ -252,6 +253,7 @@ def inventory_sort(choice2):
             print(sorted_csv)
             menu()
         else:
+            print("Invalid Entry, Back to Sorting Menu...")
             print_inventory()
     elif choice2 == '5':
         print(data)
