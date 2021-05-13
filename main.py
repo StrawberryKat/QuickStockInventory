@@ -104,8 +104,14 @@ def modify_an_item(PRODUCT_ID):
     ''')
     print(df)
     print('Enter a choice from the menu above: ')
-    choice = input()
-    if choice == '1':
+    choice3 = input()
+    modify_menu(choice3,PRODUCT_ID)
+
+
+def modify_menu(choice3,PRODUCT_ID):
+    df = pd.read_csv("database.csv")
+    df.query('PRODUCT_ID == ' + PRODUCT_ID, inplace=True)
+    if choice3 == '1':
         index_id = 0
         for index in df.index:
             index_id += index
@@ -120,7 +126,7 @@ def modify_an_item(PRODUCT_ID):
         remove_an_item(PRODUCT_ID)
 
         add_an_item(New_ID, Name, Quantity, Price)
-    elif choice == '2':
+    elif choice3 == '2':
         index_id = 0
         for index in df.index:
             index_id += index
@@ -136,7 +142,7 @@ def modify_an_item(PRODUCT_ID):
 
         add_an_item(PRODUCT_ID_NUMBER, New_Name, Quantity, Price)
         menu()
-    elif choice == '3':
+    elif choice3 == '3':
         index_id = 0
         for index in df.index:
             index_id += index
@@ -152,7 +158,7 @@ def modify_an_item(PRODUCT_ID):
 
         add_an_item(PRODUCT_ID_Number, Name, New_Quantity, Price)
         menu()
-    elif choice == '4':
+    elif choice3 == '4':
         index_id = 0
         for index in df.index:
             index_id += index
@@ -168,11 +174,11 @@ def modify_an_item(PRODUCT_ID):
 
         add_an_item(PRODUCT_ID_Number, Name, Quantity, New_Price)
         menu()
-    elif choice == '5':
+    elif choice3 == '5':
         menu()
     else:
         print("Invalid Entry Please try again...")
-        menu()
+        modify_an_item(PRODUCT_ID)
 
 
 def search(PRODUCT_ID):

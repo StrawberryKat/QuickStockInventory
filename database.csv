@@ -1,8 +1,9 @@
-PRODUCT_ID, PRODUCT_NAME, QUANTITY, PRICE
-1, Coffee, 40, 3.99
-4, Apple, 40, 3.99
-12,Espresso,35,4.0
-78,Candle,40,3.99
-1234,Potato,45,2.50
-8,Cherry Tomato,34,4.5
-2,Shampoo,65,9.99
+PRODUCT_ID, PRODUCT_NAME, QUANTITY, PRICE
+1, Coffee, 40, 3.99
+4, Apple, 40, 3.99
+12,Espresso,35,4.0
+1234,Potato,45,2.50
+8,Cherry Tomato,34,4.5
+2,Shampoo,65,9.99
+
+78,Candle,56,5.65
